@@ -11,3 +11,5 @@ function findFirstStringInBracket(str){
         return '';
     }
 }
+
+console.log('Origin String:', 'Budi(sukirman)', 'Results:', findFirstStringInBracket('Budi(sukirman)'))

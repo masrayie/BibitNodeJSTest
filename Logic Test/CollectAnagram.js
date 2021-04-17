@@ -19,5 +19,7 @@ function collectAnagram (arrString) {
         }
         anagrams.push(group)
     }
-    return anagrams
+    return anagrams.sort((a,b) => b.length - a.length)
 }
+
+console.log('Origin Array String:', "['kita', 'atik', 'tika', 'aku', 'kia', 'makan', 'kua']", 'Results:', collectAnagram(['kita', 'atik', 'tika', 'aku', 'kia', 'makan', 'kua']))
