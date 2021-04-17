@@ -53,6 +53,15 @@ const getMoviesBySearch = async (req, res) => {
     }
 
     try {
+        const dateUpdated = new Date()
+        let dateTmpU = new Date(dateUpdated.getFullYear(),dateUpdated.getMonth(),dateUpdated.getDate(),dateUpdated.getHours(),dateUpdated.getMinutes(),dateUpdated.getSeconds(),000).toISOString().replace(/T/, ' ').replace(/\..+/, '')
+
+        const apilog = await dbConn('logapicall').insert({
+            api_endpoint: '/search',
+            params: JSON.stringify(query),
+            datetime: dateTmpU
+        })
+
         // Try to hit API
         const data = await getAPI(URL, apikey, query)
         let dataMovies = data.data
@@ -97,6 +106,16 @@ const getMoviesDetail = async (req, res) => {
      }
  
      try {
+         // Input log call
+         const dateUpdated = new Date()
+         let dateTmpU = new Date(dateUpdated.getFullYear(),dateUpdated.getMonth(),dateUpdated.getDate(),dateUpdated.getHours(),dateUpdated.getMinutes(),dateUpdated.getSeconds(),000).toISOString().replace(/T/, ' ').replace(/\..+/, '')
+
+         const apilog = await dbConn('logapicall').insert({
+             api_endpoint: '/detail',
+             params: JSON.stringify(query),
+             datetime: dateTmpU
+         })
+
          // Try to hit API
          const data = await getAPI(URL, apikey, query)
          let dataMovies = data.data
