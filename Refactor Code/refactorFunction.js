@@ -1,14 +1,9 @@
 function findFirstStringInBracket(str){
     if(str.length > 0) {
         let indexFirstBracketFound = str.indexOf("(");
-        if(indexFirstBracketFound >= 0) {
-            let wordsAfterFirstBracket = str.substr(indexFirstBracketFound);
-            let indexClosingBracketFound = wordsAfterFirstBracket.indexOf(")");
-            if (indexClosingBracketFound > 0) {
-                return wordsAfterFirstBracket.substring(1,indexClosingBracketFound)
-            } else {
-                return '';
-            }
+        let indexFirstCloseBracketFound = str.indexOf(")");
+        if(indexFirstBracketFound >= 0 && indexFirstCloseBracketFound >= 0) {
+                return str.substring(indexFirstBracketFound+1,indexFirstCloseBracketFound)
         } else {
             return '';
         }
@@ -16,5 +11,3 @@ function findFirstStringInBracket(str){
         return '';
     }
 }
-
-console.log(findFirstStringInBracket('bu(diasda))asda'))
