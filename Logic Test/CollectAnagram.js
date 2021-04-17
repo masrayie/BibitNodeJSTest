@@ -3,13 +3,11 @@ function collectAnagram (arrString) {
     const anagrams = []
     while (data.length > 0) {
         let word = data[0]
-        let idxpop = []
         let group = []
         for (i in data) {
             let arrData = data[i].split('')
             let arrWord = word.split('')
             if (word.length === data[i].length && arrData.every((d) => arrWord.includes(d))) {
-                idxpop.push(i)
                 group.push(data[i])
             }
         }
